@@ -18,13 +18,7 @@ public abstract class Journal {
         String line = String.join(" ", pieces);
         return line;
     }
-//    public static String getBody() {
-//        input = new Scanner(System.in);
-//        String data = input.nextLine();
-//        String[] pieces = data.split("\\s+");
-//        String line = String.join(" ", pieces);
-//        return line;
-//    }
+
     private static void showEntry(String user, String body) throws IOException {
         String userformatString = "%-4s\n";
         String bodyformatString = "%-4s\n";
