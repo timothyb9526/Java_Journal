@@ -8,6 +8,7 @@ public abstract class Journal {
     static Scanner input;
     static Entry entry;
     public static void main(String[] args) throws IOException {
+
         operations();
     }
     public static String getInput() {
@@ -26,22 +27,28 @@ public abstract class Journal {
 //    }
     private static void showEntry(String user, String body) throws IOException {
         String userformatString = "%-4s\n";
-        String bodyformatString = "%-4s";
+        String bodyformatString = "%-4s\n";
         entry.writeFile();
         System.out.printf(userformatString, user);
         System.out.printf(bodyformatString, body);
+
     }
     public static void operations() throws IOException {
         System.out.println("Name? ");
         String name = getInput();
-        System.out.println("[R]ead or [W]rite? ");
-        String choice = getInput();
-        if (choice.equals("R")) {
-            read(name);
-        }else if (choice.equals("W")){
-            write(name);
-        } else{
-            System.exit(0);
+        boolean loopStatement = true;
+        while (loopStatement) {
+            System.out.println("[R]ead, [W]rite, or [E]xit? ");
+            String choice = getInput();
+            if (choice.equals("R")) {
+                read(name);
+            } else if (choice.equals("W")) {
+                write(name);
+            } else if (choice.equals("E")){
+                loopStatement = false;
+            } else {
+                System.out.println("Not a valid input!");
+            }
         }
     }
     public static void read(String name) throws IOException{

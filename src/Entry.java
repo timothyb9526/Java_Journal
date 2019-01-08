@@ -18,7 +18,7 @@ public class Entry {
         if (file.matches(file)) {
             BufferedWriter out = new BufferedWriter(
                     new FileWriter(file, true));
-            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            DateFormat df = new SimpleDateFormat("EEE, MMM d yyyy h:mm:ss aa");
             Date today = Calendar.getInstance().getTime();
             String reportDate = df.format(today);
             out.write(reportDate + "\n");
