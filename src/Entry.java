@@ -30,14 +30,14 @@ public class Entry {
 //        }
 //    }
     public void writeFile() throws IOException {
-        String file = user.replace(" ", "_") + ".txt";
+        String file = user.toLowerCase().replace(" ", "_") + ".txt";
         if (file.matches(file)) {
             BufferedWriter out = new BufferedWriter(
                     new FileWriter(file, true));
             out.write(body + "\n");
             out.close();
         } else {
-            PrintWriter writer = new PrintWriter(file.toLowerCase(), "UTF-8");
+            PrintWriter writer = new PrintWriter(file, "UTF-8");
             writer.println(body);
             writer.close();
         }
