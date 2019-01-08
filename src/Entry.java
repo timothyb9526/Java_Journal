@@ -1,9 +1,8 @@
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Entry {
     String user;
@@ -14,27 +13,16 @@ public class Entry {
         this.body = body;
     }
 
-//    private List<String> userArray() {
-//        List<String> users = new ArrayList<String>();
-//        return users;
-//    }
-
-//    public void writeFile(List<String> users) throws IOException {
-//
-//        if (users.contains(user)) {
-//            String file = user + ".txt"
-//            Files.write(file, body, Charset.forName("UTF-8"));
-//        } else {
-//            Path file = Paths.get(user + ".txt");
-//
-//        }
-//    }
     public void writeFile() throws IOException {
         String file = user.toLowerCase().replace(" ", "_") + ".txt";
         if (file.matches(file)) {
             BufferedWriter out = new BufferedWriter(
                     new FileWriter(file, true));
-            out.write(body + "\n");
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            Date today = Calendar.getInstance().getTime();
+            String reportDate = df.format(today);
+            out.write(reportDate + "\n");
+            out.write(body + "\n\n");
             out.close();
         } else {
             PrintWriter writer = new PrintWriter(file, "UTF-8");
